@@ -1,17 +1,17 @@
-import json
+from pandas import read_json, merge, DataFrame as df
 
 class Model(object):
-    companies = {}
-    people = {}
-    def __init__(self):
-        with open('../data/companies.json', 'r') as companies_json:
-            self.companies = json.loads(companies_json.read())
-            companies_json.close()
 
-        with open('../data/people.json', 'r') as people_json:
-            self.people = json.loads(companies_json.read())
-            people_json.close()
-    
+    df = None
+    def __init__(self, company_json_path, people_json_path):
+        assert isinstance(company_json_path, str), 'Type mismatch! company_json_path must be of type str'
+        assert isinstance(people_json_path, str), 'Type mismatch! people_json_path must be of type str'
+        
+        companies_df = read_json(company_json_path)
+        people_df = read_json(people_json_path)
+
+        self.df = merge(left=companies_df, right=people_df, left_on='index', right_on='company_id')
+
 
 
 
