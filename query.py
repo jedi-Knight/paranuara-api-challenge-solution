@@ -24,4 +24,4 @@ class Query(object):
         
         df = self.model.df
 
-        return df[ df['companies'].isin( values_list ) ].filter( return_columns ).to_dict('records')
+        return df[ df[query_column].isin( values_list ) ].filter( return_columns ).to_dict('records')
