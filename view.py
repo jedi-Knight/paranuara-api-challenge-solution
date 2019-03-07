@@ -22,12 +22,18 @@ class View(object):
         assert isinstance(two_user_data, list), 'Type mismatch! two_user_data must be of type list.'
         assert isinstance(common_friends, list), 'Type mismatch! friends_in_common must be of type list.'
         
-        formatted_data = {
-            'user-1': two_user_data[0],
-            'user-2': two_user_data[1],
-            'common-friends': common_friends
-        }
-        
+        if len(two_user_data) == 2:
+            formatted_data = {
+                'user-1': two_user_data[0],
+                'user-2': two_user_data[1],
+                'common-friends': common_friends
+            }
+        else:
+            formatted_data = {
+                'common-friends': 0,
+                'message': 'One or more users not found.'
+            }
+
         return formatted_data
 
 
@@ -58,13 +64,17 @@ class View(object):
         
         two_users_data = self.query.single_column_list_of_values_match('name', [user_name_1, user_name_2], ['name', 'age', 'address', 'phone', 'friends'])
 
-        user_1_friends = set( [ user['index'] for user in two_users_data[0]['friends'] ] )
-        user_2_friends = set( [ user['index'] for user in two_users_data[1]['friends'] ] )
 
-        del( two_users_data[0]['friends'] )
-        del( two_users_data[1]['friends'] )
+        common_friends_ids = set()
+
+        for user in two_users_data:
+            print(set([ user_friend['index'] for user_friend in user['friends'] ]))
+            print()
+            common_friends_ids = common_friends_ids | set([ user_friend['index'] for user_friend in user['friends'] ])
+            del(user['friends'])
+
         
-        common_friends_ids = list( user_1_friends & user_2_friends )
+        common_friends_ids = list(common_friends_ids)
 
         common_friends = self.query.single_column_list_of_values_match('index_y', common_friends_ids, ['name'])
         
