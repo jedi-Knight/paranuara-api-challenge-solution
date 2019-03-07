@@ -75,7 +75,7 @@ class View(object):
         
         common_friends_ids = list(common_friends_ids)
 
-        common_friends = self.query.single_column_list_of_values_match('index_y', common_friends_ids, ['name'])
+        common_friends = self.query.multi_column_match(['name'], ('index_y', common_friends_ids), ('eyeColor', 'brown'), ('has_died', False))
         
         return self.format_two_users_data(two_users_data, common_friends)
 

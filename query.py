@@ -42,10 +42,6 @@ class QueryBuilder(object):
 
 
 
-            
-
-
-
 
 
 class Query(object):
@@ -70,10 +66,18 @@ class Query(object):
 
 
     def single_column_list_of_values_match(self, query_column, values_list, return_columns):
-        assert isinstance(values_list, list), 'Type mismatch! value must be of type list.'
         assert isinstance(return_columns, list), 'Type mismatch! select_columns must be of type list.'
         
         df = self.model.df
         query = self.query_builder.multi_value_match_query(query_column, values_list)
+
+        return df[ query ].filter( return_columns ).to_dict('records')
+
+
+    def multi_column_match(self, return_columns, *col_val_tuple):
+        assert isinstance(return_columns, list), 'Type mismatch! select_columns must be of type list.'
+
+        df = self.model.df
+        query = self.query_builder.multi_column_match_query(*col_val_tuple)
 
         return df[ query ].filter( return_columns ).to_dict('records')
