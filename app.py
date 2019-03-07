@@ -1,13 +1,14 @@
+from urllib.parse import unquote
 from model import Model
 from view import View
-from urllib.parse import unquote
 from config import DATA_FILES
 
 class App(object):
     
-    view = View( Model( DATA_FILES['companies'], DATA_FILES['users'] ) )
+    view = None
 
     def __init__(self):
+        self.view = View( Model( DATA_FILES['companies'], DATA_FILES['users'] ) )
         pass
 
     def index(self):

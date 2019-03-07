@@ -8,13 +8,32 @@ class View(object):
         assert isinstance(model, Model), 'Type mismatch! model must be of type Model.'
         self.query = Query(model)
 
+    def remove_artefacts(self, records, testfield):
+        assert isinstance(records, list), 'Type mismatch! records must be of type list.'
+        assert isinstance(testfield, str), 'Type mismatch! target_field must be of type str.'
+
+        artefacts_removed = []
+        for item in records:
+            if not isinstance(item[testfield], float):
+                artefacts_removed.append(item)
+        
+        print(artefacts_removed)
+        return artefacts_removed
+
+
+    
     def format_users_list(self, users_data):
         assert isinstance(users_data, list), 'Type mismatch! users_data must be of type list.'
         
+        users_data = self.remove_artefacts(users_data, 'name')
         formatted_data = {
-            'number-of-users': len(users_data),
-            'usernames': [ item['name'] for item in users_data ]
+            'number-of-employees': len(users_data),
+            'employees': [ item['name'] for item in users_data ]
         }
+
+        if len(users_data) == 0:
+            formatted_data['message'] = 'The company has no employees.'
+        
 
         return formatted_data
 
@@ -26,11 +45,10 @@ class View(object):
             formatted_data = {
                 'user-1': two_user_data[0],
                 'user-2': two_user_data[1],
-                'common-friends': common_friends
+                'friends-in-common': common_friends
             }
         else:
             formatted_data = {
-                'common-friends': 0,
                 'message': 'One or more users not found.'
             }
 
@@ -39,14 +57,20 @@ class View(object):
 
     def format_user_data(self, user_data):
         assert isinstance(user_data, list), 'Type mismatch! users_data must be of type list.'
-        user_data = user_data[0]
-        user_favourite_food = set(user_data['favouriteFood'])
-        formatted_data = {
-            'username': user_data['name'],
-            'age': user_data['age'],
-            'fruits': list( user_favourite_food & FOOD_TYPES['fruits'] ),
-            'vegetables': list( user_favourite_food & FOOD_TYPES['vegetables'] )
-        }
+        
+        if len(user_data) > 0:
+            user_data = user_data[0]
+            user_favourite_food = set(user_data['favouriteFood'])
+            formatted_data = {
+                'username': user_data['name'],
+                'age': user_data['age'],
+                'fruits': list( user_favourite_food & FOOD_TYPES['fruits'] ),
+                'vegetables': list( user_favourite_food & FOOD_TYPES['vegetables'] )
+            }
+        else:
+            formatted_data = {
+                "message": "User not found."
+            }
 
         return formatted_data
         

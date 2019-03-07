@@ -10,7 +10,7 @@ class Model(object):
         companies_df = read_json(company_json_path)
         users_df = read_json(users_json_path)
 
-        self.df = merge(left=companies_df, right=users_df, left_on='index', right_on='company_id')
+        self.df = merge(left=companies_df, right=users_df, left_on='index', right_on='company_id', how='outer')
 
 
 
