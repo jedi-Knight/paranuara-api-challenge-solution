@@ -42,10 +42,16 @@ class View(object):
         assert isinstance(common_friends, list), 'Type mismatch! friends_in_common must be of type list.'
         
         if len(two_user_data) == 2:
+            common_friends_semantic_filtered = []
+
+            for friend in common_friends:
+                if friend['name'] != two_user_data[0]['name'] and friend['name'] != two_user_data[1]['name']:
+                    common_friends_semantic_filtered.append(friend['name'])
+
             formatted_data = {
                 'user-1': two_user_data[0],
                 'user-2': two_user_data[1],
-                'friends-in-common': common_friends
+                'friends-in-common': common_friends_semantic_filtered
             }
         else:
             formatted_data = {
