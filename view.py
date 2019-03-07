@@ -68,8 +68,7 @@ class View(object):
         common_friends_ids = set()
 
         for user in two_users_data:
-            print(set([ user_friend['index'] for user_friend in user['friends'] ]))
-            print()
+            
             common_friends_ids = common_friends_ids | set([ user_friend['index'] for user_friend in user['friends'] ])
             del(user['friends'])
 
