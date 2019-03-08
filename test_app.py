@@ -17,7 +17,7 @@ def test_company_users(app, company_name, expected_result):
     
 
 @pytest.mark.parametrize('user_name_1, user_name_2, expected_result', [
-    ("Luna%20Rodgers", "Walter%20Avery", {"user-1": {"name": "Luna Rodgers", "age": 56, "address": "430 Frank Court, Camino, American Samoa, 2134", "phone": "+1 (889) 544-3275"}, "user-2": {"name": "Walter Avery", "age": 35, "address": "797 Vandervoort Place, Wheaton, Kentucky, 1051", "phone": "+1 (992) 532-3748"}, "friends-in-common": ["Mindy Beasley", "Whitfield Deleon", "Goodwin Cook", "Decker Mckenzie"]}),
+    ("Luna%20Rodgers", "Walter%20Avery", {"user-1": {"name": "Luna Rodgers", "age": 56.0, "address": "430 Frank Court, Camino, American Samoa, 2134", "phone": "+1 (889) 544-3275"}, "user-2": {"name": "Walter Avery", "age": 35.0, "address": "797 Vandervoort Place, Wheaton, Kentucky, 1051", "phone": "+1 (992) 532-3748"}, "friends-in-common": ["Mindy Beasley", "Whitfield Deleon", "Goodwin Cook", "Decker Mckenzie", "Moon Herring"]}),
     ("Luna%20Rodgers", "WalterAvery", {"message": "One or more users not found."}),
     ("Lqws", "WalterAvery", {"message": "One or more users not found."}),
     ("Lqws", "Walter%20Avery", {"message": "One or more users not found."}),

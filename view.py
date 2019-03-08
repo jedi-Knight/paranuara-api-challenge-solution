@@ -69,7 +69,7 @@ class View(object):
             user_favourite_food = set(user_data['favouriteFood'])
             formatted_data = {
                 'username': user_data['name'],
-                'age': user_data['age'],
+                'age': int(user_data['age']),
                 'fruits': list( user_favourite_food & FOOD_TYPES['fruits'] ),
                 'vegetables': list( user_favourite_food & FOOD_TYPES['vegetables'] )
             }

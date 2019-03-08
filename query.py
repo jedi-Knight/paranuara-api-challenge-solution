@@ -1,3 +1,4 @@
+from pandas import Series
 from model import Model
 
 class QueryBuilder(object):
@@ -29,7 +30,7 @@ class QueryBuilder(object):
         assert False not in [len(item)==2 for item in col_val_tuple], 'each col_val_tuple must contain exactly 2 items.'
         assert False not in [isinstance(item[0], str) for item in col_val_tuple], 'first item of each col_val_tupe must be a string for the column to be queried.'
 
-        return_series = ( self.model.df['index_x'] >= 0 )    #get a Pandas Series object of size equals to the dataframe size and all True values
+        return_series = Series( [ True for x in self.model.df.index ] ) #get a Pandas Series object of size equals to the dataframe size and all True values
 
         for query_column, value in col_val_tuple:
             

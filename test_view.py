@@ -29,9 +29,9 @@ def test_format_users_list(view, user_data, expected_result):
 
 
 @pytest.mark.parametrize('two_user_data, common_friends, expected_output',[
-    ([{'name': 'Whitfield Deleon', 'age': 43.0, 'address': '381 Debevoise Avenue, Whitmer, Minnesota, 2849', 'phone': '+1 (879) 555-3032'}, {'name': 'Decker Mckenzie', 'age': 60.0, 'address': '492 Stockton Street, Lawrence, Guam, 4854', 'phone': '+1 (893) 587-3311'}],
-    [{'name': 'Mindy Beasley'}, {'name': 'Whitfield Deleon'}, {'name': 'Goodwin Cook'}, {'name': 'Decker Mckenzie'}],
-    {'user-1': {'name': 'Whitfield Deleon', 'age': 43.0, 'address': '381 Debevoise Avenue, Whitmer, Minnesota, 2849', 'phone': '+1 (879) 555-3032'}, 'user-2': {'name': 'Decker Mckenzie', 'age': 60.0, 'address': '492 Stockton Street, Lawrence, Guam, 4854', 'phone': '+1 (893) 587-3311'}, 'friends-in-common': ['Mindy Beasley', 'Goodwin Cook']}),
+    ([{'name': 'Whitfield Deleon', 'age': 43.0, 'address': '381 Debevoise Avenue, Whitmer, Minnesota, 2849', 'phone': '+1 (879) 555-3032'}, {'name': 'Decker Mckenzie', 'age': 60, 'address': '492 Stockton Street, Lawrence, Guam, 4854', 'phone': '+1 (893) 587-3311'}],
+    [{'name': 'Mindy Beasley'}, {'name': 'Whitfield Deleon'}, {'name': 'Goodwin Cook'}, {'name': 'Decker Mckenzie'},{"name":"Moon Herring"}],
+    {"user-1": {"name": "Whitfield Deleon", "age": 43.0, "address": "381 Debevoise Avenue, Whitmer, Minnesota, 2849", "phone": "+1 (879) 555-3032"}, "user-2": {"name": "Decker Mckenzie", "age": 60.0, "address": "492 Stockton Street, Lawrence, Guam, 4854", "phone": "+1 (893) 587-3311"}, "friends-in-common": ["Mindy Beasley", "Goodwin Cook", "Moon Herring"]}),
     ([],[],{"message": "One or more users not found."})
 ])
 def test_format_two_users_data(view, two_user_data, common_friends, expected_output):
@@ -42,8 +42,8 @@ def test_format_two_users_data(view, two_user_data, common_friends, expected_out
 
 
 @pytest.mark.parametrize('user_data, expected_result', [
-    ([{'name': 'Goodwin Cook', 'age': 32.0, 'favouriteFood': ['orange', 'apple', 'carrot', 'strawberry']}], {"username": "Goodwin Cook", "age": 32.0, "fruits": ["apple", "strawberry", "orange"], "vegetables": ["carrot"]}),
-    ([{'name': 'Moon Herring', 'age': 40.0, 'favouriteFood': ['orange', 'beetroot', 'carrot', 'celery']}], {"username": "Moon Herring", "age": 40.0, "fruits": ["orange"], "vegetables": ["celery", "beetroot", "carrot"]}),
+    ([{'name': 'Goodwin Cook', 'age': 32, 'favouriteFood': ['orange', 'apple', 'carrot', 'strawberry']}], {"username": "Goodwin Cook", "age": 32.0, "fruits": ["apple", "strawberry", "orange"], "vegetables": ["carrot"]}),
+    ([{'name': 'Moon Herring', 'age': 40, 'favouriteFood': ['orange', 'beetroot', 'carrot', 'celery']}], {"username": "Moon Herring", "age": 40.0, "fruits": ["orange"], "vegetables": ["celery", "beetroot", "carrot"]}),
     ([],{"message": "User not found."})
 ])
 def test_format_user_data(view, user_data, expected_result):
@@ -69,7 +69,7 @@ def test_company_users(view, company_name, expected_result):
     
 
 @pytest.mark.parametrize('user_name_1, user_name_2, expected_result', [
-    ("Luna Rodgers", "Walter Avery", {"user-1": {"name": "Luna Rodgers", "age": 56, "address": "430 Frank Court, Camino, American Samoa, 2134", "phone": "+1 (889) 544-3275"}, "user-2": {"name": "Walter Avery", "age": 35, "address": "797 Vandervoort Place, Wheaton, Kentucky, 1051", "phone": "+1 (992) 532-3748"}, "friends-in-common": ["Mindy Beasley", "Whitfield Deleon", "Goodwin Cook", "Decker Mckenzie"]}),
+    ("Luna Rodgers", "Walter Avery", {"user-1": {"name": "Luna Rodgers", "age": 56.0, "address": "430 Frank Court, Camino, American Samoa, 2134", "phone": "+1 (889) 544-3275"}, "user-2": {"name": "Walter Avery", "age": 35.0, "address": "797 Vandervoort Place, Wheaton, Kentucky, 1051", "phone": "+1 (992) 532-3748"}, "friends-in-common": ["Mindy Beasley", "Whitfield Deleon", "Goodwin Cook", "Decker Mckenzie", "Moon Herring"]}),
     ("Luna Rodgers", "WalterAvery", {"message": "One or more users not found."}),
     ("Lqws", "WalterAvery", {"message": "One or more users not found."}),
     ("Lqws", "Walter Avery", {"message": "One or more users not found."}),
