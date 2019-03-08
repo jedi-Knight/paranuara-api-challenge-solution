@@ -109,30 +109,30 @@ The following is the JSON return containing information about the two - people S
 #### 3. API endpoint to get the name and age of one person and the fruits and vegetables they like:
 #### `http://localhost:8080/user/<user name>`
     
-    _Example 3.1:_
+_Example 3.1:_
 
-    http://localhost:8080/user/Leblanc%20Talley
+http://localhost:8080/user/Leblanc%20Talley
 
-    Here the company name is NETBOOK. Following is its JSON return:
+Here the company name is NETBOOK. Following is its JSON return:
 
-    ```
-    {
-        "username": "Leblanc Talley",
-        "age": 55,
-        "fruits": [
-            "orange",
-            "apple"
-        ],
-        "vegetables": [
-            "carrot",
-            "celery"
-        ]
-    }
+```
+{
+    "username": "Leblanc Talley",
+    "age": 55,
+    "fruits": [
+        "orange",
+        "apple"
+    ],
+    "vegetables": [
+        "carrot",
+        "celery"
+    ]
+}
 
-    ```
+```
 
-    The JSON return respects the specified interface, i.e.:
-    ` {"username": "Ahi", "age": "30", "fruits": ["banana", "apple"], "vegetables": ["beetroot", "lettuce"]}`
+The JSON return respects the specified interface, i.e.:
+` {"username": "Ahi", "age": "30", "fruits": ["banana", "apple"], "vegetables": ["beetroot", "lettuce"]}`
 
 ## To Run Unit Tests
 After completing the build steps above, run this command:
