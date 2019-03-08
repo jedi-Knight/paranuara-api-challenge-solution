@@ -1,6 +1,6 @@
 DATA_FILES = {
-        'companies': '../data/companies.json',
-        'users': '../data/people.json'
+        'companies': 'data/companies.json',
+        'users': 'data/people.json'
     }
 
 DATA_MERGE_KEYS = {

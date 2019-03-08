@@ -12,7 +12,7 @@ class App(object):
         pass
 
     def index(self):
-        return "☼"
+        return '<!DOCTYPE html><p style="text-align: center;"><b>☼☼☼☼☼ welc☼me! ☼☼☼☼☼ </b>&#10; <br/>Please refer to API docs for available endpoints.</p>'
     
     def company_users(self, company_name):
         return self.view.company_users( unquote(company_name) )

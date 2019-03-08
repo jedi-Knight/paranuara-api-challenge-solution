@@ -1,0 +1,6 @@
+FROM python:3.7.2-slim-stretch
+EXPOSE 8080/tcp
+WORKDIR /paranuara/api
+COPY . /paranuara/api
+RUN ["/bin/bash", "setup.sh"]
+ENTRYPOINT ["/bin/bash", "start.sh"]
