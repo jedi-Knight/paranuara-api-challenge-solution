@@ -1,8 +1,14 @@
 dist: xenial
 language: python
 python: 3.7
-cache: pip
+cache: 
+  - pip
+  - mkdir
+  - curl
 install:
   - pip install -r requirements.txt
+  - mkdir ../data
+  - curl https://raw.githubusercontent.com/joaosgreccia/hivery-backend-challenge/master/resources/companies.json > ../data/companies.json
+  - curl https://raw.githubusercontent.com/joaosgreccia/hivery-backend-challenge/master/resources/people.json > ../data/people.json
 script:
   - pytest -vv
