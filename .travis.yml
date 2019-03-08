@@ -5,7 +5,6 @@ branches:
   only:
     master
 install:
-  - mkdir data
   - docker build -t paranuara-challenge-solution -f DOCKER .
 script:
   - docker run -p 0.0.0.0:8080:8080 -it --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
