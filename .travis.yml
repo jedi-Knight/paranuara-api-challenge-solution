@@ -5,13 +5,12 @@ branches:
   only:
     master
 cache: 
-  - pip
   - mkdir
   - curl
 install:
-  - pip install -r requirements.txt
-  - mkdir ../data
-  - curl https://raw.githubusercontent.com/joaosgreccia/hivery-backend-challenge/master/resources/companies.json > ../data/companies.json
-  - curl https://raw.githubusercontent.com/joaosgreccia/hivery-backend-challenge/master/resources/people.json > ../data/people.json
+  - mkdir data
+  - curl https://raw.githubusercontent.com/joaosgreccia/hivery-backend-challenge/master/resources/companies.json > data/companies.json
+  - curl https://raw.githubusercontent.com/joaosgreccia/hivery-backend-challenge/master/resources/people.json > data/people.json
+  - docker build -t paranuara-challenge-solution -f DOCKER .
 script:
-  - pytest -vv
+  - docker run -p 0.0.0.0:8080:8080 -it --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
