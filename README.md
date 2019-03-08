@@ -140,3 +140,20 @@ After completing the build steps above, run this command:
 $ docker run -p 127.0.0.1:8080:8080 -it --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
 
 ```
+
+## Code Overview
+All of the application modules are in the repo root. 
+1. `server.py` is the entry point which gets invoked on run and starts a web server. It consists of route definitions for HTTP requests. The `bottle.py` package (from PyPI) provides the WSGI interface.
+
+2. The `app.py` module is the middle layer between the route definitions of `server.py` and the output JSON builders of `view.py`. The App object initializes the data model as a Model object, loads the data into the Model object from the file path/URI defined in `config.py`, and binds it to the View object. The App object's methods get invoked by the routing functions of the `server` module. These methods perform the task of unencoding the URL parameters into plain strings and passing them into the View object's corresponding methods.
+
+3. The `view.py` module sends invokes query methods of the data model and passes the parameters received from the `app` module. The View object consists of methods that transform and map the data received from the data model queries into Python dictionary objects of the required output schema and returns them to the App for JSON serialization.
+
+4. `model.py` provides the Model class which loads the JSON files into a Pandas DataFrame object and merges them (using file path/URI and merge keys defined in `config.py` that get passed during Model instantiation by App). The DataFrame object acts like an in-memory single-table database combining both company and people data. It relies on a separate helper class Query defined in `query.py` to provide an interface for running queries on the combined table.
+
+5. The `query.py` module provides the Query class which has helper methods to perform queries on the Model and return results. These methods return query results as record sets in the form lists of dictionaries.
+The Query class itself relies on the QueryBuilder class (defined in the same module) which provides an interface for building queries for use on a Pandas DataFrame such as testing multiple values against multiple columns or multiple values within a column.
+
+6. The `test_app.py`, `test_view.py`, `test_model.py` and `test_query.py` modules provide methods for running unit tests on the app, view, model and query modules respectively.
+
+
