@@ -1,4 +1,4 @@
-from pandas import read_json, merge, DataFrame as df
+from pandas import read_json, merge
 
 class Model(object):
 
