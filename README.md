@@ -16,6 +16,9 @@ $ docker build -t paranuara-challenge-solution -f DOCKER .
 
 ```
 
+#### To use different companies.json and people.json files:
+Before running the build command, either replace the files in data/ directory of this repo with the new files, or edit the `DATA_FILE` entry in `config.py` to point to their location. Absolute path, relative path and URIs can also be used with the `DATA_FILE` option.
+
 ## To Run
 After completing the build steps above, run this command:
 
@@ -26,43 +29,49 @@ $ docker run -p 127.0.0.1:8080:8080 -dit paranuara-challenge-solution
 
 ## To test the API endpoints (solutions):
 
-Note: The query and return values of following examples are based on the JSON data included in the challenge GitHub repo. Please change the company and user names to test with different data.
 
+#### Please note:
+1. The company/people names and return values used for the following examples are based on the JSON data included in the challenge GitHub repo. Please change the company and user names to test with different data.
+2. The API should be running for the below endpoints to be accessible. To run the API, please follow the steps described above.
+
+### API Endpoints
 1. API endpoint to get all employees for a given company:
 `http://localhost:8080/company/<company name>`
 
-To test this endpoint, click the following links with the API running:
-_Example 1.1:_
-[http://localhost:8080/company/PERMADYNE](http://localhost:8080/company/NETBOOK)
-Here the company name is PERMADYNE. Following is its JSON return:
-```
-{
-    "number-of-employees": 7,
-    "employees": 
-        [
-        "Frost Foley", 
-        "Luna Rodgers", 
-        "Boyer Raymond", 
-        "Solomon Cooke", 
-        "Walter Avery", 
-        "Hester Malone", 
-        "Arlene Erickson"
-        ]
-}
-```
-The `number-of-employees` field gives the number of employees of the company, the `employees` field gives the names of the employees as an array.
+    To test this endpoint, click the following links with the API running:
+    _Example 1.1:_
 
-_Example 1.2:_
-[http://localhost:8080/company/NETBOOK](http://localhost:8080/company/NETBOOK)
-Here the company name is NETBOOK. Following is its JSON return:
-```
-{
-    "number-of-employees": 0, 
-    "employees": [],
-    "message": "The company has no employees."
-}
-```
-If a company has no employees, the `number-of-employees` and `employees` field reflect this fact and a `message` field is included in the JSON which includes a string message.
+    [http://localhost:8080/company/PERMADYNE](http://localhost:8080/company/NETBOOK)
+    Here the company name is PERMADYNE. Following is its JSON return:
+    ```
+    {
+        "number-of-employees": 7,
+        "employees": 
+            [
+            "Frost Foley", 
+            "Luna Rodgers", 
+            "Boyer Raymond", 
+            "Solomon Cooke", 
+            "Walter Avery", 
+            "Hester Malone", 
+            "Arlene Erickson"
+            ]
+    }
+    ```
+    The `number-of-employees` field gives the number of employees of the company, the `employees` field gives the names of the employees as an array.
+
+    _Example 1.2:_
+
+    [http://localhost:8080/company/NETBOOK](http://localhost:8080/company/NETBOOK)
+    Here the company name is NETBOOK. Following is its JSON return:
+    ```
+    {
+        "number-of-employees": 0, 
+        "employees": [],
+        "message": "The company has no employees."
+    }
+    ```
+    If a company has no employees, the `number-of-employees` and `employees` field reflect this fact and a `message` field is included in the JSON which includes a string message.
 
 
 
@@ -100,6 +109,7 @@ The following is the JSON return containing information about the two - people S
 `http://localhost:8080/user/<user name>`
     
     _Example 3.1:_
+
     http://localhost:8080/user/Leblanc%20Talley
 
     Here the company name is NETBOOK. Following is its JSON return:
