@@ -24,7 +24,7 @@ $ docker run -p 127.0.0.1:8080:8080 -dit paranuara-challenge-solution
 
 ```
 
-#### To test the API endpoints (solutions):
+## To test the API endpoints (solutions):
 
 Note: The query and return values of following examples are based on the JSON data included in the challenge GitHub repo. Please change the company and user names to test with different data.
 
