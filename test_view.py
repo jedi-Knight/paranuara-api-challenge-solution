@@ -3,9 +3,9 @@ import pytest
 @pytest.fixture(scope='module')
 def view():
     from model import Model
-    from config import DATA_FILES
+    from config import DATA_FILES, DATA_MERGE_KEYS
     from view import View
-    view = View( Model( DATA_FILES['companies'], DATA_FILES['users'] ) )
+    view = View( Model( DATA_FILES['companies'], DATA_FILES['users'], DATA_MERGE_KEYS['companies'], DATA_MERGE_KEYS['users'] ) )
     return view
 
 @pytest.mark.parametrize('records, testfield, expected_result',[

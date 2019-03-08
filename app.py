@@ -1,14 +1,14 @@
 from urllib.parse import unquote
 from model import Model
 from view import View
-from config import DATA_FILES
+from config import DATA_FILES, DATA_MERGE_KEYS
 
 class App(object):
     
     view = None
 
     def __init__(self):
-        self.view = View( Model( DATA_FILES['companies'], DATA_FILES['users'] ) )
+        self.view = View( Model( DATA_FILES['companies'], DATA_FILES['users'], DATA_MERGE_KEYS['companies'], DATA_MERGE_KEYS['users'] ) )
         pass
 
     def index(self):
