@@ -1,3 +1,10 @@
+'''
+This is the entry point which gets invoked on run and starts a web server. 
+It consists of route definitions for HTTP requests. 
+The bottle.py package (from PyPI) provides the WSGI interface.
+
+'''
+
 from bottle import route, run, error
 from app import App
 

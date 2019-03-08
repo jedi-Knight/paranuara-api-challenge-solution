@@ -1,3 +1,14 @@
+'''
+This module is the middle layer between the route definitions of server.py 
+and the output JSON builders of view.py. The App object initializes the data model 
+as a Model object, loads the data into the Model object from the file path/URI 
+defined in config.py, and binds it to the View object. 
+
+The App object's methods get invoked by the routing functions of the server module. 
+These methods perform the task of unencoding the URL parameters into plain strings 
+and passing them into the View object's corresponding methods.
+
+'''
 from urllib.parse import unquote
 from model import Model
 from view import View

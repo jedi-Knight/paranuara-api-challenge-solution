@@ -1,3 +1,11 @@
+'''
+The view.py module sends invokes query methods of the data model and passes 
+the parameters received from the app module. The View object consists of methods 
+that transform and map the data received from the data model queries into 
+dictionaries of the required output schema and returns them to the App.
+
+'''
+
 from model import Model
 from query import Query
 from config import FOOD_TYPES

@@ -1,3 +1,13 @@
+'''
+This module provides the Model class which loads the JSON files 
+into a Pandas DataFrame object and merges them using file path/URI 
+and merge keys defined in config.py that get passed during Model instantiation by App). 
+
+The DataFrame object acts like an in-memory single-table database combining both company 
+and people data. It relies on a separate helper class Query defined in query.py to provide 
+an interface for running queries on the combined table.
+'''
+
 from pandas import read_json, merge
 
 class Model(object):

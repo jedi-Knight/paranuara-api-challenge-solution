@@ -43,6 +43,7 @@ To test this endpoint, click the following links with the API running:
 _Example 1.1:_
 
 [http://localhost:8080/company/PERMADYNE](http://localhost:8080/company/NETBOOK)
+
 Here the company name is PERMADYNE. Following is its JSON return:
 ```
 {
@@ -64,6 +65,7 @@ The `number-of-employees` field gives the number of employees of the company, th
 _Example 1.2:_
 
 [http://localhost:8080/company/NETBOOK](http://localhost:8080/company/NETBOOK)
+
 Here the company name is NETBOOK. Following is its JSON return:
 ```
 {
@@ -80,6 +82,7 @@ If a company has no employees, the `number-of-employees` and `employees` field r
 #### `http://localhost:8080/user/<one user name>/<another user name>`
 _Example 2.1:_
 http://localhost:8080/user/Sharron%20Barker/Moon%20Herring
+
 The following is the JSON return containing information about the two - people Sharron Barker and Moon Herring, and their friends in common who have brown eyes and are alive:
 
 ```
@@ -156,4 +159,10 @@ The Query class itself relies on the QueryBuilder class (defined in the same mod
 
 6. The `test_app.py`, `test_view.py`, `test_model.py` and `test_query.py` modules provide methods for running unit tests on the app, view, model and query modules respectively.
 
-
+7. Others:
+    - `DOCKER`: Dockerfile to build the API container.
+    - `setup.sh`: This executed within the API container during build. It creates a virtual environment and installs Python dependencies using pip.
+    - `start.sh`: This gets executed within the API container during run. It runs `server.py` within the container.
+    - `tesh.sh`: Executable shell script to install pytest and run unit tests when the container is run in test mode using the command described in the "To Run Unit Test" section above.
+    - `requirements.txt`: List of dependencies installed by pip running inside the Docker container during build.
+    

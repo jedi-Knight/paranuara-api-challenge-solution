@@ -1,3 +1,14 @@
+'''
+The query.py module provides the Query class which has helper methods to perform queries 
+on the Model and return results. These methods return query results as record sets 
+in the form lists of dictionaries. 
+
+The Query class itself relies on the QueryBuilder class (defined in the same module) 
+which provides an interface for building queries for use on a Pandas DataFrame 
+such as testing multiple values against multiple columns or multiple values within a column.
+
+'''
+
 from pandas import Series
 from model import Model
 
