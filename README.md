@@ -35,48 +35,49 @@ $ docker run -p 127.0.0.1:8080:8080 -dit paranuara-challenge-solution
 2. The API should be running for the below endpoints to be accessible. To run the API, please follow the steps described above.
 
 ### API Endpoints
-1. API endpoint to get all employees for a given company:
-`http://localhost:8080/company/<company name>`
+##### 1. API endpoint to get all employees for a given company:
+##### `http://localhost:8080/company/<company name>`
 
-    To test this endpoint, click the following links with the API running:
-    _Example 1.1:_
+To test this endpoint, click the following links with the API running:
 
-    [http://localhost:8080/company/PERMADYNE](http://localhost:8080/company/NETBOOK)
-    Here the company name is PERMADYNE. Following is its JSON return:
-    ```
-    {
-        "number-of-employees": 7,
-        "employees": 
-            [
-            "Frost Foley", 
-            "Luna Rodgers", 
-            "Boyer Raymond", 
-            "Solomon Cooke", 
-            "Walter Avery", 
-            "Hester Malone", 
-            "Arlene Erickson"
-            ]
-    }
-    ```
-    The `number-of-employees` field gives the number of employees of the company, the `employees` field gives the names of the employees as an array.
+_Example 1.1:_
 
-    _Example 1.2:_
+[http://localhost:8080/company/PERMADYNE](http://localhost:8080/company/NETBOOK)
+Here the company name is PERMADYNE. Following is its JSON return:
+```
+{
+    "number-of-employees": 7,
+    "employees": 
+        [
+        "Frost Foley", 
+        "Luna Rodgers", 
+        "Boyer Raymond", 
+        "Solomon Cooke", 
+        "Walter Avery", 
+        "Hester Malone", 
+        "Arlene Erickson"
+        ]
+}
+```
+The `number-of-employees` field gives the number of employees of the company, the `employees` field gives the names of the employees as an array.
 
-    [http://localhost:8080/company/NETBOOK](http://localhost:8080/company/NETBOOK)
-    Here the company name is NETBOOK. Following is its JSON return:
-    ```
-    {
-        "number-of-employees": 0, 
-        "employees": [],
-        "message": "The company has no employees."
-    }
-    ```
-    If a company has no employees, the `number-of-employees` and `employees` field reflect this fact and a `message` field is included in the JSON which includes a string message.
+_Example 1.2:_
+
+[http://localhost:8080/company/NETBOOK](http://localhost:8080/company/NETBOOK)
+Here the company name is NETBOOK. Following is its JSON return:
+```
+{
+    "number-of-employees": 0, 
+    "employees": [],
+    "message": "The company has no employees."
+}
+```
+If a company has no employees, the `number-of-employees` and `employees` field reflect this fact and a `message` field is included in the JSON which includes a string message.
 
 
 
-2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:
-`http://localhost:8080/user/<one user name>/<another user name>`
+#### 2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:
+#### `http://localhost:8080/user/<one user name>/<another user name>`
 _Example 2.1:_
 http://localhost:8080/user/Sharron%20Barker/Moon%20Herring
 The following is the JSON return containing information about the two - people Sharron Barker and Moon Herring, and their friends in common who have brown eyes and are alive:
@@ -105,8 +106,8 @@ The following is the JSON return containing information about the two - people S
 
 ```
 
-3. API endpoint to get the name and age of one person and the fruits and vegetables they like:
-`http://localhost:8080/user/<user name>`
+#### 3. API endpoint to get the name and age of one person and the fruits and vegetables they like:
+#### `http://localhost:8080/user/<user name>`
     
     _Example 3.1:_
 
