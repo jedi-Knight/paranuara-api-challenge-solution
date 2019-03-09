@@ -2,16 +2,16 @@
 
 #### Table of Contents
 * [Dependencies](#dependencies)
-* [To Build and Run on Jenkins:](#to-build-and-run-on-jenkins)
+* [To Build and Run on Jenkins](#to-build-and-run-on-jenkins)
 * [To Build and Run On Localhost](#to-build-and-run-on-localhost)
     * [To Build](#to-build)
-        * [To use different companies.json and people.json files during build:](#to-use-different-companiesjson-and-peoplejson-files)
+        * [To use different companies.json and people.json files during build](#to-use-different-companiesjson-and-peoplejson-files)
     * [To Run](#to-run)
-* [To test the API endpoints (ie. the challenge solutions):](#to-test-the-api-endpoints-solutions)
+* [To test the API endpoints (ie. the challenge solutions)](#to-test-the-api-endpoints-solutions)
     * [API Endpoints](#api-endpoints)
-        * [1. API endpoint to get all employees for a given company:](#1-api-endpoint-to-get-all-employees-for-a-given-company)
-        * [2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:](#2-api-endpoint-to-get-the-name-age-address-and-phone-information-about-two-people-and-a-list-of-their-friends-in-common-who-have-brown-eyes-and-are-still-alive)
-        * [3. API endpoint to get the name and age of one person and the fruits and vegetables they like:](#3-api-endpoint-to-get-the-name-and-age-of-one-person-and-the-fruits-and-vegetables-they-like)
+        * [1. API endpoint to get all employees for a given company](#1-api-endpoint-to-get-all-employees-for-a-given-company)
+        * [2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive](#2-api-endpoint-to-get-the-name-age-address-and-phone-information-about-two-people-and-a-list-of-their-friends-in-common-who-have-brown-eyes-and-are-still-alive)
+        * [3. API endpoint to get the name and age of one person and the fruits and vegetables they like](#3-api-endpoint-to-get-the-name-and-age-of-one-person-and-the-fruits-and-vegetables-they-like)
 * [To Run Tests](#to-run-tests)
 * [Code Overview](#code-overview)
 
@@ -22,7 +22,7 @@
 4. Jenkins pipeline access to the `docker` command.
 5. Connectivity to Docker Hub and PypI.
 
-## To Build and Run on Jenkins:
+## To Build and Run on Jenkins
 Create a new SCM or GitHub based pipeline on Jenkins and enter this repository url as the source. Use `Jenkinsfile` as the script path (this is the default setting if using Jenkin's Blue Ocean UI). Start the pipeline build.
 Build, Run and Test tasks are run. On Sucessful execution of the Run task, the API is accessible at port `8383` of the Jenkins-Docker host machine. 
 `http://<Jenkins server address>:8383/`
@@ -39,7 +39,7 @@ $ docker build -t paranuara-challenge-solution -f DOCKER .
 
 ```
 
-#### To use different companies.json and people.json files:
+#### To use different companies.json and people.json files
 Before running the build command, either replace the files in data/ directory of this repo with the new files, or edit the `DATA_FILE` entry in `config.py` to point to their location. Absolute path, relative path and URIs can also be used with the `DATA_FILE` option.
 
 ## To Run
@@ -50,7 +50,7 @@ $ docker run -p 127.0.0.1:8383:8080 -dit --rm paranuara-challenge-solution
 
 ```
 
-## To test the API endpoints (solutions):
+## To test the API endpoints (solutions)
 
 
 #### Please note:
@@ -58,7 +58,7 @@ $ docker run -p 127.0.0.1:8383:8080 -dit --rm paranuara-challenge-solution
 2. The API should be running for the below endpoints to be accessible. To run the API, please follow the steps described above.
 
 ### API Endpoints
-##### 1. API endpoint to get all employees for a given company:
+##### 1. API endpoint to get all employees for a given company
 ##### `http://localhost:8383/company/<company name>`
 
 To test this endpoint, click the following links with the API running locally:
@@ -101,7 +101,7 @@ If a company has no employees, the `number-of-employees` and `employees` field r
 
 
 
-#### 2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:
+#### 2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive
 #### `http://localhost:8383/user/<one user name>/<another user name>`
 _Example 2.1:_
 http://localhost:8383/user/Sharron%20Barker/Moon%20Herring
@@ -132,7 +132,7 @@ The following is the JSON return containing information about the two - people S
 
 ```
 
-#### 3. API endpoint to get the name and age of one person and the fruits and vegetables they like:
+#### 3. API endpoint to get the name and age of one person and the fruits and vegetables they like
 #### `http://localhost:8383/user/<user name>`
     
 _Example 3.1:_
