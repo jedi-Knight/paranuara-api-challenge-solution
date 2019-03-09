@@ -1,6 +1,6 @@
 import pytest, requests
 
-BASE_URL = 'http://0.0.0.0:8080/'
+BASE_URL = 'http://127.0.0.1:8080/'
 
 @pytest.mark.parametrize('company_name, expected_response_code, expected_content_type', [
     ('PERMADYNE', 200, 'application/json'),
