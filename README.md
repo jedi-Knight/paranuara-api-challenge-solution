@@ -1,19 +1,19 @@
 # Paranuara Challenge Solution
 
 #### Table of Contents
-    * [Dependencies](#dependencies)
-    * [To Build and Run on Jenkins:](#to-build-and-run-on-jenkins)
-    * [To Build and Run On Localhost](#to-build-and-run-on-localhost)
-        * [To Build](#to-build)
-        * [To use different companies.json and people.json files during build:](#to-use-different-companiesjson-and-peoplejson-files)
-    * [To Run](#to-run)
-    * [To test the API endpoints (ie. the challenge solutions):](#to-test-the-api-endpoints-solutions)
-        * [API Endpoints](#api-endpoints)
-            * [1. API endpoint to get all employees for a given company:](#1-api-endpoint-to-get-all-employees-for-a-given-company)
-            * [2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:](#2-api-endpoint-to-get-the-name-age-address-and-phone-information-about-two-people-and-a-list-of-their-friends-in-common-who-have-brown-eyes-and-are-still-alive)
-            * [3. API endpoint to get the name and age of one person and the fruits and vegetables they like:](#3-api-endpoint-to-get-the-name-and-age-of-one-person-and-the-fruits-and-vegetables-they-like)
-    * [To Run Tests](#to-run-tests)
-    * [Code Overview](#code-overview)
+* [Dependencies](#dependencies)
+* [To Build and Run on Jenkins:](#to-build-and-run-on-jenkins)
+* [To Build and Run On Localhost](#to-build-and-run-on-localhost)
+    * [To Build](#to-build)
+    * [To use different companies.json and people.json files during build:](#to-use-different-companiesjson-and-peoplejson-files)
+* [To Run](#to-run)
+* [To test the API endpoints (ie. the challenge solutions):](#to-test-the-api-endpoints-solutions)
+    * [API Endpoints](#api-endpoints)
+        * [1. API endpoint to get all employees for a given company:](#1-api-endpoint-to-get-all-employees-for-a-given-company)
+        * [2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:](#2-api-endpoint-to-get-the-name-age-address-and-phone-information-about-two-people-and-a-list-of-their-friends-in-common-who-have-brown-eyes-and-are-still-alive)
+        * [3. API endpoint to get the name and age of one person and the fruits and vegetables they like:](#3-api-endpoint-to-get-the-name-and-age-of-one-person-and-the-fruits-and-vegetables-they-like)
+* [To Run Tests](#to-run-tests)
+* [Code Overview](#code-overview)
 
 ## Dependencies
 1. Docker version 18.09.3.
