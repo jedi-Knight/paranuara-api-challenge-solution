@@ -5,4 +5,4 @@ branches:
 install:
   - docker build -t paranuara-challenge-solution -f DOCKER .
 script:
-  - docker run -t --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
+  - docker run -it --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
