@@ -23,9 +23,16 @@
 5. Connectivity to Docker Hub and PypI.
 
 ## To Build and Run on Jenkins
-Create a new SCM or GitHub based pipeline on Jenkins and enter this repository url as the source. Use `Jenkinsfile` as the script path (this is the default setting if using Jenkin's Blue Ocean UI). Start the pipeline build.
-Build, Run and Test tasks are run. On Sucessful execution of the Run task, the API is accessible at port `8383` of the Jenkins-Docker host machine. 
+
+The Jenkins pipeline definition is in the `Jenkinsfile` of this repo. 
+
+To use it with Jenkins, create a new SCM or GitHub based pipeline on Jenkins and enter this repository url as the source. Then Use `Jenkinsfile` as the script path (this is the default setting if using Jenkin's Blue Ocean UI). 
+
+Start the pipeline build. Jenkin runs the pipeline Build, Run and Test tasks. 
+
+On Sucessful execution of the Run task, the API is accessible at port `8383` of the Jenkins-Docker host machine. 
 `http://<Jenkins server address>:8383/`
+
 The API endpoints are described in the _To test the API endpoints (solutions)_ section below. Please replace _localhost_ with the Jenkins-Docker host address to test the examples on the CI server.
 
 ## To Build and Run On Localhost
