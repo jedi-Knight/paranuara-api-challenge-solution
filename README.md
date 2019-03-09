@@ -1,11 +1,19 @@
 # Paranuara Challenge Solution
 
 ## Dependencies
-1. Docker version 18.09.3
-2. Connectivity to Docker Hub and PypI
+1. Docker version 18.09.3.
+2. Jenkins 2.150.3.
+3. Docker plugin installed on Jenkins.
+4. Jenkins pipeline access to the `docker` command.
+5. Connectivity to Docker Hub and PypI.
 
+## To Build and Run on Jenkins:
+Create a new Jenkins pipeline and source this repository.
+Build, Run and Test tasks are run. On Sucessful execution of the Run task, the API is accessible at port `8383` of the Jenkins-Docker host machine. 
+`http://<Jenkins server address>:8383/`
+The API endpoints are described in the _To test the API endpoints (solutions)_ section below. Please replace _localhost_ with the Jenkins-Docker host address to test the examples on the CI server.
 
-## Build and Run
+## To Build and Run On Localhost
 
 ### To Build
 
@@ -38,7 +46,7 @@ $ docker run -p 127.0.0.1:8383:8080 -dit paranuara-challenge-solution
 ##### 1. API endpoint to get all employees for a given company:
 ##### `http://localhost:8383/company/<company name>`
 
-To test this endpoint, click the following links with the API running:
+To test this endpoint, click the following links with the API running locally:
 
 _Example 1.1:_
 
@@ -160,9 +168,11 @@ The Query class itself relies on the QueryBuilder class (defined in the same mod
 6. The `test_app.py`, `test_view.py`, `test_model.py` and `test_query.py` modules provide methods for running unit tests on the app, view, model and query modules respectively.
 
 7. Others:
+    - `Jenkinsfile`: Jenkins task pipeline is defined here.
     - `DOCKER`: Dockerfile to build the API container.
     - `setup.sh`: This executed within the API container during build. It creates a virtual environment and installs Python dependencies using pip.
     - `start.sh`: This gets executed within the API container during run. It runs `server.py` within the container.
     - `tesh.sh`: Executable shell script to install pytest and run unit tests when the container is run in test mode using the command described in the "To Run Unit Test" section above.
     - `requirements.txt`: List of dependencies installed by pip running inside the Docker container during build.
+    - `.travis.yml` Required only when using the Travis-CI pipeline.
     
