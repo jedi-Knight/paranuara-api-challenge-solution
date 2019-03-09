@@ -1,5 +1,20 @@
 # Paranuara Challenge Solution
 
+* __Table of Contents__
+    * [Dependencies](#dependencies)
+    * [To Build and Run on Jenkins:](#to-build-and-run-on-jenkins)
+    * [To Build and Run On Localhost](#to-build-and-run-on-localhost)
+        * [To Build](#to-build)
+        * [To use different companies.json and people.json files during build:](#to-use-different-companiesjson-and-peoplejson-files)
+    * [To Run](#to-run)
+    * [To test the API endpoints (ie. the challenge solutions):](#to-test-the-api-endpoints-solutions)
+        * [API Endpoints](#api-endpoints)
+            * [1. API endpoint to get all employees for a given company:](#1-api-endpoint-to-get-all-employees-for-a-given-company)
+            * [2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:](#2-api-endpoint-to-get-the-name-age-address-and-phone-information-about-two-people-and-a-list-of-their-friends-in-common-who-have-brown-eyes-and-are-still-alive)
+            * [3. API endpoint to get the name and age of one person and the fruits and vegetables they like:](#3-api-endpoint-to-get-the-name-and-age-of-one-person-and-the-fruits-and-vegetables-they-like)
+    * [To Run Tests](#to-run-tests)
+    * [Code Overview](#code-overview)
+
 ## Dependencies
 1. Docker version 18.09.3.
 2. Jenkins 2.150.3.
@@ -8,7 +23,7 @@
 5. Connectivity to Docker Hub and PypI.
 
 ## To Build and Run on Jenkins:
-Create a new Jenkins pipeline and source this repository.
+Create a new SCM or GitHub based pipeline on Jenkins and enter this repository url as the source. Use `Jenkinsfile` as the script path (this is the default setting if using Jenkin's Blue Ocean UI). Start the pipeline build.
 Build, Run and Test tasks are run. On Sucessful execution of the Run task, the API is accessible at port `8383` of the Jenkins-Docker host machine. 
 `http://<Jenkins server address>:8383/`
 The API endpoints are described in the _To test the API endpoints (solutions)_ section below. Please replace _localhost_ with the Jenkins-Docker host address to test the examples on the CI server.
@@ -31,7 +46,7 @@ Before running the build command, either replace the files in data/ directory of
 After completing the build steps above, run this command:
 
 ```
-$ docker run -p 127.0.0.1:8383:8080 -dit paranuara-challenge-solution
+$ docker run -p 127.0.0.1:8383:8080 -dit --rm paranuara-challenge-solution
 
 ```
 
@@ -145,12 +160,13 @@ Here the company name is NETBOOK. Following is its JSON return:
 The JSON return respects the specified interface, i.e.:
 ` {"username": "Ahi", "age": "30", "fruits": ["banana", "apple"], "vegetables": ["beetroot", "lettuce"]}`
 
-## To Run Unit Tests
-After completing the build steps above, run this command:
+## To Run Tests
+The following command runs unit tests within the container using pytest:
 ```
-$ docker run -p 127.0.0.1:8383:8080 -it --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
+$ docker run -t --entrypoint /paranuara/api/test.sh --rm paranuara-challenge-solution
 
-```
+``` 
+As explained in the _Code Overview_ section below (#6), these tests cover unit tests as well as the API endpoint functional tests.
 
 ## Code Overview
 All of the application modules are in the repo root. 
@@ -165,7 +181,11 @@ All of the application modules are in the repo root.
 5. The `query.py` module provides the Query class which has helper methods to perform queries on the Model and return results. These methods return query results as record sets in the form lists of dictionaries.
 The Query class itself relies on the QueryBuilder class (defined in the same module) which provides an interface for building queries for use on a Pandas DataFrame such as testing multiple values against multiple columns or multiple values within a column.
 
-6. The `test_app.py`, `test_view.py`, `test_model.py` and `test_query.py` modules provide methods for running unit tests on the app, view, model and query modules respectively.
+6. The `test_app.py`, `test_view.py`, `test_model.py` and `test_query.py` modules provide methods for running unit tests on the app, view, model and query modules respectively. 
+
+    The `test_app.py` module provides tests for API route definitions. These tests compare the JSON return for a given API query against the expected return value. The `test_http.py` module provide tests for route definitions of the API server endpoints. 
+
+    __Therefore, the `test_http.py` and `test_app.py` together provide the functional tests for the endpoint interface specified by the challenge statement.__
 
 7. Others:
     - `Jenkinsfile`: Jenkins task pipeline is defined here.
@@ -174,5 +194,5 @@ The Query class itself relies on the QueryBuilder class (defined in the same mod
     - `start.sh`: This gets executed within the API container during run. It runs `server.py` within the container.
     - `tesh.sh`: Executable shell script to install pytest and run unit tests when the container is run in test mode using the command described in the "To Run Unit Test" section above.
     - `requirements.txt`: List of dependencies installed by pip running inside the Docker container during build.
-    - `.travis.yml` Required only when using the Travis-CI pipeline.
+    - `.travis.yml` Required only if using the Travis-CI pipeline.
     

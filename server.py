@@ -27,8 +27,8 @@ def two_users(user_name_1, user_name_2):
     return app.two_users(user_name_1, user_name_2)
 
 @error(404)
-def error404(error):
-    return 'Endpoint not implemented. Please refer to API docs for available endpoints.'
+def error_404(error):
+    return app.error_404(error)
 
 if __name__ == "__main__":
     run(host='0.0.0.0', port=8080, debug=True)

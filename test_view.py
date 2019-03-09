@@ -5,8 +5,11 @@ def view():
     from model import Model
     from config import DATA_FILES, DATA_MERGE_KEYS
     from view import View
-    view = View( Model( DATA_FILES['companies'], DATA_FILES['users'], DATA_MERGE_KEYS['companies'], DATA_MERGE_KEYS['users'] ) )
-    return view
+    try:
+        view = View( Model( DATA_FILES['companies'], DATA_FILES['users'], DATA_MERGE_KEYS['companies'], DATA_MERGE_KEYS['users'] ) )
+        return view
+    except:
+        raise AssertionError('There was a problem creating the Model instance!')
 
 @pytest.mark.parametrize('records, testfield, expected_result',[
     ([],'name',[]),

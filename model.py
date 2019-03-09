@@ -17,8 +17,13 @@ class Model(object):
         assert isinstance(left_table_json, str), 'Type mismatch! left_table_json must be of type str'
         assert isinstance(right_table_json, str), 'Type mismatch! right_table_json must be of type str'
         
-        companies_df = read_json(left_table_json)
-        users_df = read_json(right_table_json)
+        try:
+            companies_df = read_json(left_table_json)
+            users_df = read_json(right_table_json)
+        except FileNotFoundError:
+            raise AssertionError('People and companies data not found at the given URI!')
+        except:
+            raise AssertionError('There was a problem reading the data!')
 
         self.df = merge(left=companies_df, right=users_df, left_on=left_key, right_on=right_key, how='outer')
 

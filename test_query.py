@@ -7,11 +7,13 @@ from pandas import DataFrame
 def model():
     from model import Model
     from config import DATA_FILES, DATA_MERGE_KEYS
-    model = Model( DATA_FILES['companies'], DATA_FILES['users'], DATA_MERGE_KEYS['companies'], DATA_MERGE_KEYS['users'] )
-    
-    model.df = DataFrame({'col1':[1,2,3,4],'col2':['val1','val2','val3','val4']}) #use simpler dataframe for simpler test inputs
-    
-    return model
+
+    try:
+        model = Model( DATA_FILES['companies'], DATA_FILES['users'], DATA_MERGE_KEYS['companies'], DATA_MERGE_KEYS['users'] )
+        model.df = DataFrame({'col1':[1,2,3,4],'col2':['val1','val2','val3','val4']}) #use simpler dataframe for simpler test inputs
+        return model
+    except:
+        raise AssertionError('There was a problem creating the Model instance!')
 
 
 @pytest.fixture(scope='module')

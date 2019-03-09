@@ -17,3 +17,7 @@ FOOD_TYPES = {      # Required to differentiate fruits from vegetables.
         'fruits': {'strawberry', 'orange', 'banana', 'apple'},          # Set of fruits
         'vegetables': {'cucumber', 'celery', 'carrot', 'beetroot'}      # Set of vegetables
     }
+
+INDEX_PAGE_CONTENT = '<!DOCTYPE html><p style="text-align: center;"><b>☼☼☼☼☼ welc☼me! ☼☼☼☼☼ </b>&#10; <br/>Please refer to API docs for available endpoints.</p>'
+
+ERROR_404_MESSAGE = 'Endpoint not implemented. Please refer to API docs for available endpoints.'
