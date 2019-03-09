@@ -104,6 +104,7 @@ If a company has no employees, the `number-of-employees` and `employees` field r
 #### 2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive
 #### `http://localhost:8383/user/<one user name>/<another user name>`
 _Example 2.1:_
+
 http://localhost:8383/user/Sharron%20Barker/Moon%20Herring
 
 The following is the JSON return containing information about the two - people Sharron Barker and Moon Herring, and their friends in common who have brown eyes and are alive:
