@@ -1,6 +1,6 @@
 # Paranuara Challenge Solution
 
-* __Table of Contents__
+#### Table of Contents
     * [Dependencies](#dependencies)
     * [To Build and Run on Jenkins:](#to-build-and-run-on-jenkins)
     * [To Build and Run On Localhost](#to-build-and-run-on-localhost)
