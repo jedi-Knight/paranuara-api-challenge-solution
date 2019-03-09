@@ -23,7 +23,7 @@ Before running the build command, either replace the files in data/ directory of
 After completing the build steps above, run this command:
 
 ```
-$ docker run -p 127.0.0.1:8080:8080 -dit paranuara-challenge-solution
+$ docker run -p 127.0.0.1:8383:8080 -dit paranuara-challenge-solution
 
 ```
 
@@ -36,13 +36,13 @@ $ docker run -p 127.0.0.1:8080:8080 -dit paranuara-challenge-solution
 
 ### API Endpoints
 ##### 1. API endpoint to get all employees for a given company:
-##### `http://localhost:8080/company/<company name>`
+##### `http://localhost:8383/company/<company name>`
 
 To test this endpoint, click the following links with the API running:
 
 _Example 1.1:_
 
-[http://localhost:8080/company/PERMADYNE](http://localhost:8080/company/NETBOOK)
+[http://localhost:8383/company/PERMADYNE](http://localhost:8383/company/NETBOOK)
 
 Here the company name is PERMADYNE. Following is its JSON return:
 ```
@@ -64,7 +64,7 @@ The `number-of-employees` field gives the number of employees of the company, th
 
 _Example 1.2:_
 
-[http://localhost:8080/company/NETBOOK](http://localhost:8080/company/NETBOOK)
+[http://localhost:8383/company/NETBOOK](http://localhost:8383/company/NETBOOK)
 
 Here the company name is NETBOOK. Following is its JSON return:
 ```
@@ -79,9 +79,9 @@ If a company has no employees, the `number-of-employees` and `employees` field r
 
 
 #### 2. API endpoint to get the Name, Age, Address and phone information about two people, and a list of their friends in common who have brown eyes and are still alive:
-#### `http://localhost:8080/user/<one user name>/<another user name>`
+#### `http://localhost:8383/user/<one user name>/<another user name>`
 _Example 2.1:_
-http://localhost:8080/user/Sharron%20Barker/Moon%20Herring
+http://localhost:8383/user/Sharron%20Barker/Moon%20Herring
 
 The following is the JSON return containing information about the two - people Sharron Barker and Moon Herring, and their friends in common who have brown eyes and are alive:
 
@@ -110,11 +110,11 @@ The following is the JSON return containing information about the two - people S
 ```
 
 #### 3. API endpoint to get the name and age of one person and the fruits and vegetables they like:
-#### `http://localhost:8080/user/<user name>`
+#### `http://localhost:8383/user/<user name>`
     
 _Example 3.1:_
 
-http://localhost:8080/user/Leblanc%20Talley
+http://localhost:8383/user/Leblanc%20Talley
 
 Here the company name is NETBOOK. Following is its JSON return:
 
@@ -140,7 +140,7 @@ The JSON return respects the specified interface, i.e.:
 ## To Run Unit Tests
 After completing the build steps above, run this command:
 ```
-$ docker run -p 127.0.0.1:8080:8080 -it --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
+$ docker run -p 127.0.0.1:8383:8080 -it --entrypoint /paranuara/api/test.sh paranuara-challenge-solution
 
 ```
 
