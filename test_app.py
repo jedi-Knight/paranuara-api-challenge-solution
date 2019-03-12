@@ -1,5 +1,8 @@
+'''
+`app` module unit tests.
+'''
 import pytest
-from config import INDEX_PAGE_CONTENT, ERROR_404_MESSAGE
+from config import INDEX_PAGE_CONTENT, ERROR_404_MESSAGE, INDEX_PAGE_CONTENT
 
 @pytest.fixture(scope='module')
 def app():
@@ -67,6 +70,7 @@ def test_user(app, user_name, expected_result):
     if 'fruits' in gotten_result.keys():
         gotten_result['fruits'] = set(gotten_result['fruits'])
         expected_result['fruits'] = set(expected_result['fruits'])
+    if 'vegetables' in gotten_result.keys():
         gotten_result['vegetables'] = set(gotten_result['vegetables'])
         expected_result['vegetables'] = set(expected_result['vegetables'])
     

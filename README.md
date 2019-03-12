@@ -174,7 +174,7 @@ The following command runs unit tests within the container using pytest:
 $ docker run -t --entrypoint /paranuara/api/test.sh --rm paranuara-challenge-solution
 
 ``` 
-As explained in the _Code Overview_ section below (#6), these tests cover unit tests as well as the API endpoint functional tests.
+As described in the _Code Overview_ section below (#6), these tests cover unit tests as well as the API endpoint functional tests. `Pytest` is used for the tests, the PyPI package gets installed by the `test.sh` script along with the `requests` package to test the API endpoints over HTTP.
 
 ## Code Overview
 All of the application modules are in the repo root. 
@@ -189,18 +189,14 @@ All of the application modules are in the repo root.
 5. The `query.py` module provides the Query class which has helper methods to perform queries on the Model and return results. These methods return query results as record sets in the form lists of dictionaries.
 The Query class itself relies on the QueryBuilder class (defined in the same module) which provides an interface for building queries for use on a Pandas DataFrame such as testing multiple values against multiple columns or multiple values within a column.
 
-6. The `test_app.py`, `test_view.py`, `test_model.py` and `test_query.py` modules provide methods for running unit tests on the app, view, model and query modules respectively. 
-
-    The `test_app.py` module provides tests for API route definitions. These tests compare the JSON return for a given API query against the expected return value. The `test_http.py` module provide tests for route definitions of the API server endpoints. 
-
-    __Therefore, the `test_http.py` and `test_app.py` together provide the functional tests for the endpoint interface specified by the challenge statement.__
+6. __The `test_app.py`, `test_view.py`, `test_model.py` and `test_query.py` modules provide unit tests for the app, view, model and query modules respectively. The `test_http.py` module provides functional tests for the endpoint interfaces specified by the challenge problem statement.__
 
 7. Others:
     - `Jenkinsfile`: Jenkins task pipeline is defined here.
     - `DOCKER`: Dockerfile to build the API container.
     - `setup.sh`: This executed within the API container during build. It creates a virtual environment and installs Python dependencies using pip.
     - `start.sh`: This gets executed within the API container during run. It runs `server.py` within the container.
-    - `tesh.sh`: Executable shell script to install pytest and run unit tests when the container is run in test mode using the command described in the "To Run Unit Test" section above.
+    - `tesh.sh`: Executable shell script to install `pytest` and `requests` packages fro PyPI and run tests when the container is run in test mode using the command described in the "To Run Unit Test" section above.
     - `requirements.txt`: List of dependencies installed by pip running inside the Docker container during build.
     - `.travis.yml` Required only if using the Travis-CI pipeline.
     
