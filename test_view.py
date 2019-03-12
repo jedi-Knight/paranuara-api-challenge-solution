@@ -1,3 +1,7 @@
+'''
+`view` module unit tests.
+'''
+
 import pytest
 
 @pytest.fixture(scope='module')

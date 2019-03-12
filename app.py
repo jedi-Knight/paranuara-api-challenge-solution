@@ -19,6 +19,13 @@ class App(object):
     view = None
 
     def __init__(self):
+        '''
+        The App object constructor creates a Model instance 
+        giving the filepaths/URIs (defined in DATA_FILES of config.py)
+        of the two datasets to load and combine
+        into its Model.df DataFrame, 
+        and binds it to an instance of the View object. 
+        '''
         try:
             self.view = View( 
                             Model( 
@@ -33,21 +40,36 @@ class App(object):
         
 
     def index(self):
+        '''
+        Returns INDEX_PAGE_CONTENT defined in config.py.
+        '''
         return INDEX_PAGE_CONTENT
 
 
     def error_404(self, error):
+        '''
+        Returns ERROR_404_MESSAGE defined in config.py.
+        '''
         return ERROR_404_MESSAGE
     
 
     def company_users(self, company_name):
+        '''
+        Returns the dictionary for the list of employees at a given company_name.
+        '''
         return self.view.company_users( unquote(company_name) )
     
 
     def two_users(self, user_name_1, user_name_2):
+        '''
+        Gives the information about the two users as per the specified requirements of the API challenge problem statement.
+        '''
         return self.view.two_users( unquote(user_name_1), unquote(user_name_2) )
     
     def user(self, user_name):
+        '''
+        Gives the information about user_name as per the specified requirements of the API challenge problem statement.
+        '''
         return self.view.user( unquote(user_name) )
 
     
