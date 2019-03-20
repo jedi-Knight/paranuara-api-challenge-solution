@@ -108,6 +108,8 @@ $(function() {
 <p>Clone or download this repository, change directory to the repository path, then run this command:</p>
 <div class="fragment"><div class="line">$ docker build -t paranuara-challenge-solution -f DOCKER .</div></div><!-- fragment --><h4>To use different companies.json and people.json files</h4>
 <p>Before running the build command, either replace the files in data/ directory of this repo with the new files, or edit the <code>DATA_FILE</code> entry in <code>config.py</code> to point to their location. Absolute path, relative path and URIs can also be used with the <code>DATA_FILE</code> option.</p>
+<h5>IMPORTANT:</h5>
+<p>When using a different dataset, the tests in <code><a class="el" href="namespacetest__app.html">test_app</a></code>, <code><a class="el" href="namespacetest__view.html">test_view</a></code> and <code><a class="el" href="namespacetest__http.html">test_http</a></code> modules that test the return values using parameters sampled from the included companies.json and people.json data may fail if the new data does not include the records used for the tests. In such event, please comment out or delete the test parameters that rely on the included data. Alternatively, the test parameters can be modified using records sampled from the new dataset.</p>
 <h2>To Run</h2>
 <p>After completing the build steps above, run this command:</p>
 <div class="fragment"><div class="line">$ docker run -p 127.0.0.1:8383:8080 -dit --rm paranuara-challenge-solution</div></div><!-- fragment --><h2>To test the API endpoints (solutions)</h2>
