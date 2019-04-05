@@ -1,7 +1,3 @@
-'''
-`query` module unit tests.
-'''
-
 import pytest
 from pandas import DataFrame
 
