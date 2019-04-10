@@ -1,6 +1,7 @@
 # Paranuara Challenge Solution
 
 #### Table of Contents
+* [Introduction](#introduction)
 * [Dependencies](#dependencies)
 * [To Build and Run on Jenkins](#to-build-and-run-on-jenkins)
 * [To Build and Run On Localhost](#to-build-and-run-on-localhost)
@@ -14,6 +15,11 @@
         * [3. API endpoint to get the name and age of one person and the fruits and vegetables they like](#3-api-endpoint-to-get-the-name-and-age-of-one-person-and-the-fruits-and-vegetables-they-like)
 * [To Run Tests](#to-run-tests)
 * [Code Overview](#code-overview)
+
+## Introduction
+This repo is a solution to an open source API challenge problem statement which can be found on GitHub.
+A fork of the problem statement GitHub repo is available here: https://github.com/jedi-Knight/Python-backend-API-challenge
+The following contents of this readme describe the solution.
 
 ## Dependencies
 1. Docker version 18.09.3.
@@ -35,7 +41,7 @@ On Sucessful execution of the Run task, the API is accessible at port `8383` of 
 
 The API endpoints are described in the _To test the API endpoints (solutions)_ section below. Please replace _localhost_ with the Jenkins-Docker host address to test the examples on the CI server.
 
-## To Build and Run On Localhost
+## To Build and Run on Localhost
 
 ### To Build
 
@@ -47,7 +53,7 @@ $ docker build -t paranuara-challenge-solution -f DOCKER .
 ```
 
 #### To use different companies.json and people.json files
-Before running the build command, either replace the files in data/ directory of this repo with the new files, or edit the `DATA_FILE` entry in `config.py` to point to their location. Absolute path, relative path and URIs can also be used with the `DATA_FILE` option.
+Before running the build command, either replace the files in data/ directory of this repo with the new files, or edit the `DATA_FILE` entry in `config.py` to point to their location. Absolute paths, relative paths and URIs can be used with the `DATA_FILE` option.
 
 ##### IMPORTANT:
 When using a different dataset, the tests in `test_app`, `test_view` and `test_http` modules that test the return values using parameters sampled from the included companies.json and people.json data may fail if the new data does not include the records used for the tests. In such event, please comment out or delete the test parameters that rely on the included data. Alternatively, the test parameters can be modified using records sampled from the new dataset.
