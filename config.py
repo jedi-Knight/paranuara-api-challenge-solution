@@ -4,8 +4,8 @@ Consists of config parameters for the app.
 '''
 
 DATA_FILES = {      # Required to import the data.
-        'companies': 'data/companies.json',     # File path or URI to companies JSON data
-        'users': 'data/people.json'             # File path or URI to people JSON data
+        'companies': 'https://raw.githubusercontent.com/jedi-Knight/Python-backend-API-challenge/master/resources/companies.json',     # File path or URI to companies JSON data
+        'users': 'https://raw.githubusercontent.com/jedi-Knight/Python-backend-API-challenge/master/resources/people.json'             # File path or URI to people JSON data
     }
 
 DATA_MERGE_KEYS = {                 # Required to match companies and people.

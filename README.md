@@ -53,7 +53,7 @@ $ docker build -t paranuara-challenge-solution -f DOCKER .
 ```
 
 #### To use different companies.json and people.json files
-Before running the build command, either replace the files in data/ directory of this repo with the new files, or edit the `DATA_FILE` entry in `config.py` to point to their location. Absolute paths, relative paths and URIs can be used with the `DATA_FILE` option.
+Before running the build command, edit the `DATA_FILE` entry in `config.py` to point to their location. Absolute paths, relative paths and URIs can be used with the `DATA_FILE` option.
 
 ##### IMPORTANT:
 When using a different dataset, the tests in `test_app`, `test_view` and `test_http` modules that test the return values using parameters sampled from the included companies.json and people.json data may fail if the new data does not include the records used for the tests. In such event, please comment out or delete the test parameters that rely on the included data. Alternatively, the test parameters can be modified using records sampled from the new dataset.
